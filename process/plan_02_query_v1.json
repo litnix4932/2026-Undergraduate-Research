@@ -1,0 +1,59 @@
+{
+  "version": 3,
+  "created_at": "2026-10-01T16:35:20.685Z",
+  "task_summary": "Query v1 설계·known-item diagnostic 실행 후 방법론 v2 갱신",
+  "agents": [],
+  "phases": [
+    {
+      "name": "Plan",
+      "delegations": [
+        {
+          "steps": [
+            {
+              "title": "Facet 정의와 현상 분류축 확정",
+              "description": "기존 3-facet(Material × Treatment × Property/Probe)에 **현상 분류 facet**을 추가해 놷 현상(reducibility / defect-site 반연성 / OH 매개 산소 전달 / 금속·산화물 계면)을 가로로 구분한다. Probe facet에는 `reducibility_evidence_criteria.csv`의 Tier A/B/C 어팁(H2O 정량, reoxidation, 18O, mid-gap, E_Ovac, heterolytic, spillover 등)을 명시적으로 넣어, 검색 결과가 증거 요구사항과 매핑되도로 한다. 산출물: facet 정의표(query_v1.md 1장)와 각 facet에 들어갈 어팁 초안."
+            },
+            {
+              "title": "Query v1 작성과 PRESS 자가점검",
+              "description": "OpenAlex `filter=title_and_abstract.search:` 필드제한 Boolean 형태로 query v1을 작성한다(기본형 `A AND B AND C`, recall 확장형 `A AND B`). 표기 변이(gamma-alumina / γ-Al2O3 / transition alumina 등)를 열거하고, McGowan 2016 PRESS 6요소(연구질문 번역, Boolean·근접 연산자, subject heading 부재 대처, text-word 선정, 필드 지정, 실행 오류)를 자가 적용해 점검 기록을 남긴다. 산출물: query v1 문자열과 PRESS 점검표."
+            },
+            {
+              "title": "Known-item diagnostic 라운드 1",
+              "description": "`seed_set_v2.csv`의 KEEP 18 + OPTIONAL 9 = 27편에 대해 query v1이 각 seed를 검색해내는지 DOI 매칭으로 판정한다. 사전 정한 정량 threshold는 사용하지 않고, 미검출 seed 개별에 원인코드(TERM / FIELD / COVERAGE / LOGIC / TYPE)와 근거를 1행식 기록한다. 특히 abstract 부재로 인한 구조적 미검출(1970–80년대)은 query 결함이 아니라 색인 한계로 분리 표기한다. 산출물: known_item_diagnostic.csv 라운드 1 열."
+            },
+            {
+              "title": "Query 반복 개선과 중단 판정",
+              "description": "원인코드가 TERM·LOGIC인 seed만을 대상으로 어팁을 수확하고 Boolean 구조를 고쳐 v2·v3를 만들어 재시험한다. 매 라운드마다 실제 회수된 seed 수와 전체 검색 결과 증가량(precision 죄화 정도)를 함은에 기록하고, `literature_methodology.md` §4.5의 pragmatic stopping criterion을 적용해 어느 버전에서 어떤 근거로 중단했는지 1문단으로 명시한다. completeness를 보장한다는 서술은 사용하지 않는다. 산출물: 버전별 진단 열과 반복 이력."
+            },
+            {
+              "title": "Tier A 표적 어팁의 생산성 시험",
+              "description": "`reducibility_criteria.md` §6.1의 6개 표적(H2O 정량·MS, 재산화·OSC, 결함상태·XANES·EPR, 18O·MvK, 금속·산화물 계면, 도핑)에 대해 각각 필드제한 Boolean을 돌려, γ-Al2O3 대상 Tier A 문헌이 실제로 없는지 탐색으로 확정한다. 주요 핛은 Crossref로 서지 검증하고 초록이 있으면 Tier 판정을 붙인다. 거기에 가짜집전 궐 해당 분야에서 본 연구가 제기한 '피소성 vs 검색실패' 판정 기준을 적용해, 겁골가 적음을 때 독립 경로로 재검색해 둘 중 어떤 경우인지 기록한다. 산출물: 표적별 생산성 표와 신근 필수 후보 목록(있을 경우)."
+            },
+            {
+              "title": "보강 경로용 query 변환과 기록 양식",
+              "description": "확정된 query를 WoS / Scopus 및 SciFinder·Reaxys 문법으로 변환해 적어놰다(이 환경에서 직접 실행 불가하므로 사용자가 직접 돌릴 수 있는 형태로). 함꺻 PRISMA-S 16항목 중 본 연구에 해당하는 필수 기록 필드(source, 플랫폼, 검색일, 전체 query 문자열, 필터, 결과 수, export 파일명)를 빈 기록 양식으로 만들어 둔다. 산출물: query_v1.md의 변환표와 기록 양식."
+            },
+            {
+              "title": "방법론 v2 통합 작성",
+              "description": "`literature_methodology.md`를 v2로 갱슱한다. 반영 항목: ① framework를 4단 선형에서 5축+2분기([P]→[S]→[O1]/[O2]/[O3]→[R1]/[R2] + [I] 계면 경로)로 교정, ② Tier A/B/C 증거 인정 기주을 결정 ③(screening)·④(추출)에 편입, ③ **Gate 3(인용 지지 검증)** 신설 — Gate 1·2를 통과한 인용이도 인용된 문헌이 주장을 실제로 지지하는지 확인(Ammendola 사례를 근거로 명시), ④ SI 참고문헌 수동 확인 절차, ⑤ 필드제한 Boolean을 query 기본형으로, ⑥ '문헌 피소성 vs 검색실패' 판정 절차, ⑦ 이번 diagnostic의 실제 결과를 관산 증거로 삽입. 개정 항목에는 ①확립·②수정·③신궜 라벨을 유지한다."
+            },
+            {
+              "title": "인용 대조 및 아티팩트 저장",
+              "description": "생산한 모든 문서에 대해 본문의 DOI·인용키를 `methodology_references.csv`·`seed_set_v2.csv`·`reducibility_references.csv`와 자동 대조해 미등재 인용이나 집어넣은 DOI가 없는지 확인하고(지난 단게에서 오류가 실제 발생한 항목), 새로 인용한 문헌은 Crossref 검증 후 참고문헌표에 추가한다. query_v1.md·known_item_diagnostic.csv·literature_methodology_v2.md를 artifact로 저장한다."
+            }
+          ]
+        }
+      ],
+      "id": "phase-0"
+    }
+  ],
+  "desired_outputs": [
+    "query_v1.md — facet 정의, 최종 query 문자열(OpenAlex + 보강경로 변환형), 설계 근거와 버전 이력",
+    "known_item_diagnostic.csv — seed별 검색 여부·원인코드·조치·라운드별 결과",
+    "literature_methodology_v2.md — framework 5축, Tier A/B/C 기준, Gate 3, 진단 결과를 반영한 방법론 개정향"
+  ],
+  "feasibility": {
+    "confidence": "medium",
+    "rationale": "query 설계와 known-item diagnostic 자신은 평생 실행 가능합니다. 단 seed 27편 중 1970–80년대 문헌(Knözinger 1978, Kramer 1979, Amenomiya 1978)는 OpenAlex에 abstract가 없어 **어떤 query로도 검색되지 않을 가능성이 큽니다** — 이 경우 진단은 query 품질이 아니라 색인 한계를 재는 것이 되므로, 그 둘을 원인코드로 구분해 보고하고 해당 seed는 citation chasing 전용으로 분리하게 됩니다."
+  }
+}

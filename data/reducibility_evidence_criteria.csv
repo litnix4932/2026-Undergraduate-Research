@@ -1,0 +1,13 @@
+﻿criterion_id,tier,evidence_type,required_measurement,what_it_establishes,what_it_does_NOT_establish,gamma_Al2O3_current_status
+A1,Tier A — 인정,산소 제거의 직접 정량,H2(또는 CO) 소모와 **H2O(또는 CO2) 생성을 동시 정량**하고 화학량이 일치,격자 산소가 실제로 제거되었다,제거된 산소가 격자 산소인지 OH/흡착수 유래인지는 A1 단독으로 구분 못함,γ-Al2O3에서 미발견
+A2,Tier A — 인정,가역성 / 재산화 적정,1차 환원 후 O2 재산화로 소모 산소량을 적정하고 사이클 재현성 확인,산소 결손이 생성되었고 되돌릴 수 있다 (OSC의 본질),결손의 위치(표면/벌크)는 구분 못함,γ-Al2O3에서 미발견
+A3,Tier A — 인정,전자 귀속의 분광학적 확인,환원된 양이온 또는 mid-gap 결함상태를 XPS/XANES/EPR/광학으로 확인,산소와 함께 나간 전자가 어디에 들어갔는지,alumina는 접근가능한 저산화수 양이온이 없어 양이온 signature를 기대할 수 없음 → 결함상태 쪽으로 입증 부담 이동,γ-Al2O3에서 미발견 (EPR은 조사손상 α상 문헌에 편재)
+A4,Tier A — 최강,격자 산소의 반응 참여 (MvK),18O 라벨 격자 산소가 생성물에 나타남을 동위원소로 추적,그 산소가 실제 반응에 쓰였다,교환과 반응 참여를 구분하려면 조건 설계 필요,γ-Al2O3에서 미발견
+B1,Tier B — 보조,산소 저장·방출량 (OSC류),산소 흡·방출량 정량,물질의 산소 방출 용량 수준,'reducible하다'가 아니라 '용량이 얼마다'만 말함,γ-Al2O3 대상 측정 미발견
+B2,Tier B — 보조,산소 교환 속도·온도,18O/16O 교환(TPIE) 또는 CO 과도응답,격자 산소의 이동성 수준,이동성 ≠ 제거 용이성. 교환은 산소 수가 보존되는 과정,Martin1996: γ-Al2O3 최대 교환 620 °C (CeO2 410 °C)
+B3,Tier B — 보조,계산된 E_Ovac,DFT 표면 산소공공 생성에너지,그 물질·그 면의 산소 제거 비용,계산 조건·면 선택 의존. 실험 재현 보장 안 함,Hinuma2020: θ-Al2O3 (201̄) 5.46 eV
+C1,Tier C — 불인정,TCD만으로 본 TPR 피크,TCD 단일 검출기 승온 프로파일,아무것도 단독 확정 못함 — H2 소모·H2O 발생·탈수화를 구분 불가,**Jeong2020 SI Fig. 1이 여기에 해당**,해당
+C2,Tier C — 불인정,H2 소모량 단독,H2 소모만 정량 (물 정량·재산화 없음),H2가 소비되었다,"H2 해리·흡착·spillover로도 동일 신호 발생 (Joubert2006, Kramer1979)",해당
+C3,Tier C — 불인정,Al 배위수·OH 변화 관측,"27Al NMR Al(V) 생성, 1H NMR OH 변화, IR OH 밴드",표면/결함 **구조**가 변했다 → [S] 증거,Al(V)는 양이온 배위상태이며 산소 결손이 아님. Wischert2012는 저배위 Al의 원인을 탈수화로 봄,해당 — 현재 seed 다수가 여기
+C4,Tier C — 불인정,복합 시료의 환원 신호,ceria·Pt 등이 함께 있는 시료의 TPR/XPS,그 복합계가 환원된다,"alumina 자체의 거동으로 귀속 불가. 금속은 교환·WGS를 수백 °C 가속 (Martin1996, Ammendola2011)",해당
+C5,Tier C — 불인정 (단 [R1]로는 유효),산소 제거 없는 표면 반응성,"H2/CH4 heterolytic splitting, Lewis 산염기 반응",표면이 **반응성** 있다 → [R1] 증거,reducibility 증거가 아님. Joubert2006은 25 °C에서 H2 반응을 보였으나 산소 제거는 아님,해당

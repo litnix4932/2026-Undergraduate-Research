@@ -1,0 +1,28 @@
+﻿seed,doi,year,venue,classification,scope,chain_link,openalex_abstract,R1_Q4_2facet_broad,R2_Q6_broad_fixed,R3_Q7_plus_probe,precision_query_Q11_strict,final_Q10_union,cause_code,cause_detail,action_taken
+Carrasco2004,10.1103/physrevlett.93.225502,2004,Physical Review Letters,KEEP,boundary,[C] 계산비교,있음,검출,검출,검출,미검출,검출,—,라운드 1에서 검출됨,
+Haneda2000,10.1246/cl.2000.974,2000,Chemistry Letters,OPTIONAL,boundary,[D'] ,있음,검출,검출,검출,미검출,검출,—,라운드 1에서 검출됨,
+Hinuma2020,10.1021/acs.jpcc.0c00994,2020,The Journal of Physical Chemistry C,KEEP,boundary,[C] 계산기준,있음,검출,검출,검출,미검출,검출,—,라운드 1에서 검출됨,
+Ishizaki2003,10.1016/s0022-3697(02)00377-3,2003,Journal of Physics and Chemistry of Solids,OPTIONAL,boundary,[B] 결함분광,없음,검출,검출,검출,미검출,검출,—,라운드 1에서 검출됨,
+Ostrovski2010,10.1002/srin.201000177,2010,steel research international,KEEP,boundary,[D] 열역학 기준,있음,검출,검출,검출,미검출,검출,—,라운드 1에서 검출됨,
+Shablonin2020,10.1016/j.jnucmat.2020.152600,2021,Journal of Nuclear Materials,OPTIONAL,boundary,precision probe,없음,미검출,검출,검출,미검출,검출,의도적 비표적,α-Al2O3 중성자 조사손상 문헌 — precision 탐침용 boundary seed,검출되지 않는 것이 정상. union 질의에서만 포착
+Amenomiya1978,10.1016/0021-9517(78)90207-5,1978,Journal of Catalysis,KEEP,core,[C]/[D'] 기원,없음,미검출,검출,검출,미검출,검출,TERM,제목이 'Water-gas conversion' — C3는 'water-gas shift'만 보유한 근접 변이 누락,C3에 water-gas conversion 추가 → 검출
+Ammendola2011,10.1016/j.susc.2011.06.018,2011,Surface Science,KEEP,core,[D] 출처 검증,없음,검출,검출,검출,검출,검출,—,라운드 1에서 검출됨,
+Chen1992,10.1016/0021-9517(92)90239-e,1992,Journal of Catalysis,OPTIONAL,core,[B]→반응성,없음,검출,검출,검출,검출,검출,—,라운드 1에서 검출됨,
+Choi2022,10.1016/j.apcatb.2022.122325,2023,Applied Catalysis B: Environmental,OPTIONAL,core,[A]→[B],없음,검출,검출,검출,미검출,검출,—,라운드 1에서 검출됨,
+Digne2004,10.1016/j.jcat.2004.04.020,2004,Journal of Catalysis,KEEP,core,[A]→[B] 계산,없음,검출,검출,검출,미검출,검출,—,라운드 1에서 검출됨,
+Fottinger2008,10.1039/b713161e,2008,Chem. Commun.,OPTIONAL,core,[D'] 동위원소,있음,검출,검출,검출,미검출,검출,—,라운드 1에서 검출됨,
+IngramJones1996,10.1039/jm9960600073,1996,Journal of Materials Chemistry,OPTIONAL,core,[A]→[B],있음,미검출,검출,검출,미검출,검출,LOGIC,dehydroxylation을 Treatment facet(B)에만 배치해 2-facet(A AND C) 질의에서 탈락,dehydroxylation·dehydration을 C3에도 중복 배치 → 검출
+Jeong2020,10.1038/s41929-020-0427-z,2020,Nature Catalysis,KEEP,core,"[A]→[B], [D] 주장",없음,검출,검출,검출,검출,검출,—,라운드 1에서 검출됨,
+Joubert2006,10.1021/jp0641841,2006,The Journal of Physical Chemistry B,KEEP,core,[D'] 대안설명,있음,검출,검출,검출,검출,검출,—,라운드 1에서 검출됨,
+Kalamaras2008,10.1016/j.cattod.2008.06.010,2008,Catalysis Today,KEEP,core,[D'] 동위원소 증거,없음,검출,검출,검출,검출,검출,—,라운드 1에서 검출됨,
+Knozinger1978,10.1080/03602457808080878,1978,Catalysis Reviews,KEEP,core,[B] 표면화학,있음,미검출,검출,검출,미검출,검출,TERM,제목·초록이 'surface sites/surface models' 어휘 사용. C2에 해당 어휘 부재,C2에 surface site·acid site·surface model 추가 → 검출
+Kramer1979,10.1016/0021-9517(79)90266-5,1979,Journal of Catalysis,KEEP,core,[D'] 대안설명,없음,검출,검출,검출,미검출,검출,—,라운드 1에서 검출됨,
+Kwak2007,10.1016/j.jcat.2007.06.029,2007,Journal of Catalysis,KEEP,core,[A]→[B],없음,검출,검출,검출,검출,검출,—,라운드 1에서 검출됨,
+Liu2021,10.1016/j.apcatb.2021.120171,2021,Applied Catalysis B: Environmental,OPTIONAL,core,[A]→[B],없음,검출,검출,검출,미검출,검출,—,라운드 1에서 검출됨,
+Martin1996,10.1021/jp9531568,1996,The Journal of Physical Chemistry,KEEP,core,[C] 직접측정,있음,검출,검출,검출,미검출,검출,—,라운드 1에서 검출됨,
+Morterra1996,10.1016/0920-5861(95)00163-8,1996,Catalysis Today,KEEP,core,[B]→[C] 경계,없음,미검출,미검출,검출,미검출,검출,TERM+FIELD,abstract 없음. 제목 어휘가 'surface chemistry/vibrational spectroscopy'로 phenomenon facet 밖 → probe facet(C5) 추가 시에만 검출,C5 probe facet 포함 시 검출
+Prins2020,10.1016/j.jcat.2020.10.010,2020,Journal of Catalysis,KEEP,core,[B],없음,미검출,미검출,미검출,미검출,검출,FIELD,제목이 'On the structure of γ-Al2O3'뿐이고 OpenAlex에 abstract 없음 → 어떤 phenomenon facet으로도 도달 불가. 물질어 단독(A_strict)으로만 검출,query로 해결 불가 — citation chasing 전담
+Serre1993,10.1006/jcat.1993.1113,1993,Journal of Catalysis,OPTIONAL,core,[D] 기원,없음,검출,검출,검출,미검출,검출,—,라운드 1에서 검출됨,
+Shi2020,10.1021/acscatal.0c03091,2020,ACS Catalysis,KEEP,core,[A]→[C] 주장,있음,검출,검출,검출,미검출,검출,—,라운드 1에서 검출됨,
+Wang2022,10.1002/aic.17998,2022,AIChE Journal,KEEP,core,claim-pattern 시험,있음,검출,검출,검출,미검출,검출,—,라운드 1에서 검출됨,
+Wischert2012,10.1021/ja3042383,2012,Journal of the American Chemical Society,KEEP,core,[B]→[D'] 반증,있음,검출,검출,검출,미검출,검출,—,라운드 1에서 검출됨,

@@ -1,20 +1,16 @@
-# γ-Al₂O₃ Surface Chemistry & Defect Engineering — Literature Study
+# γ-Al₂O₃ Literature Study
 
-2026 생명화학공학과 학부 졸업연구. γ-Al₂O₃(gamma alumina)의 **synthesis / post-treatment condition이 surface·defect structure를 어떻게 바꾸며, 어떤 조건에서 unusually reactive하거나 potentially reducible한 γ-Al₂O₃가 형성되는가**를 체계적 문헌연구(systematic scoping / mapping)로 규명한다.
-
-최종 목표는 개별 논문의 synthesis recipe 나열이 아니라 **general synthesis / pretreatment strategy의 도출**이다.
-
-> 이 리포지토리는 **문헌연구의 방법론과 중간 산출물**을 기록한다. 본격적인 문헌 수집(Tier 1, 5,758건)은 아직 시작 전이며, 과학적 결론은 어느 문서에도 들어 있지 않다.
+γ-Al₂O₃(gamma alumina)의 **synthesis / post-treatment condition이 surface 및 defect structure를 어떻게 바꾸며, 어떤 조건에서 reactive하거나 reducible한 γ-Al₂O₃가 형성되는가**를 문헌연구로 규명하고, 최종적으로 **pretreatment strategy를 도출**한다.
 
 ---
 
 ## 현재 상태
 
-| Phase | 내용 | 산출물 | 상태 |
+| 단계 | 내용 | 산출물 | 상태 |
 |---|---|---|---|
 | 1 | 문헌검색 방법론 확립 (v1) | `docs/01` + `data/methodology_references.csv` | 완료 |
 | 2 | Seed set v1 구축 (16편) | `docs/02` + `data/seed_set_v1_final.csv` | 완료 |
-| 3 | Seed set 비판적 재검토 (v2) | `docs/03` + `data/seed_set_v2.csv` | 완료 |
+| 3 | Seed set 재검토 (v2) | `docs/03` + `data/seed_set_v2.csv` | 완료 |
 | 4 | "Reducibility" 개념 검증 + 증거 등급 확정 | `docs/04` + `data/reducibility_*.csv` | 완료 |
 | 5 | Query v1 설계 + known-item diagnostic + 방법론 v2 | `docs/05`, `docs/06`, `data/known_item_diagnostic.csv` | 완료 |
 | 6 | Tier 1 코퍼스 수집 및 screening | — | **다음 단계** |
@@ -24,7 +20,7 @@
 ## 디렉터리
 
 ```
-docs/    방법론·분석 보고서 (Markdown, 작성 순서대로 번호)
+docs/    방법론 및 분석 보고서 (Markdown, 작성 순서대로 번호)
 data/    검증된 서지 표 및 측정 결과 (CSV)
 process/ 각 단계의 실행 계획 (JSON, 과정 기록용)
 ```
@@ -33,10 +29,10 @@ process/ 각 단계의 실행 계획 (JSON, 과정 기록용)
 
 | 파일 | 내용 |
 |---|---|
-| `01_literature_methodology_v1.md` | 채택한 Literature Search Methodology v1과 6개 핵심 결정의 근거. 방법론 문헌 71편에 기반. |
-| `02_seed_set_analysis.md` | 초기 seed 4편 분석, coverage·bias 진단, 결손 범주 도출, 후보 탐색 → seed set v1(16편). |
-| `03_seed_set_v2_review.md` | Seed set 비판적 재검토. Ammendola 2011 원문 검증, `Al(V) → oxygen vacancy → reducibility` 사슬 감사. KEEP 18 / OPTIONAL 9 / REMOVE 6. |
-| `04_reducibility_criteria.md` | "Reducibility"의 문헌상 정의 검증과 **Tier A/B/C 증거 등급** 확정. 4단계 선형 framework → 5축·2분기 구조로 개정. |
+| `01_literature_methodology_v1.md` | 채택한 Literature Search Methodology v1과 6개 핵심 결정의 근거(방법론 문헌 71편에 기반함) |
+| `02_seed_set_analysis.md` | 초기 seed 4편 분석, coverage·bias 진단, 결손 범주 도출, 후보 탐색 → seed set v1(16편) |
+| `03_seed_set_v2_review.md` | Seed set 재검토하여 KEEP 18 / OPTIONAL 9 / REMOVE 6으로 분류 |
+| `04_reducibility_criteria.md` | "Reducibility"의 문헌상 정의 검증과 **Tier A/B/C 증거 등급** 확정 |
 | `05_query_v1.md` | Query v1 facet 어휘 전문, 11개 변이의 결과 수·recall 측정, 미검출 원인 진단, 2-tier 설계, Scopus/WoS 변환형. |
 | `06_literature_methodology_v2.md` | v1 대비 개정 8항목. Gate 3 신설, S0.5 단계 신설 등 — 전부 Phase 5의 실측에 근거. |
 

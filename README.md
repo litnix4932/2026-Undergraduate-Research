@@ -2,7 +2,7 @@
 
 γ-Al₂O₃(gamma alumina)의 **synthesis / post-treatment condition이 surface 및 defect structure를 어떻게 바꾸며, 어떤 조건에서 reactive하거나 reducible한 γ-Al₂O₃가 형성되는가**를 문헌연구로 규명하고, 최종적으로 **pretreatment strategy를 도출**한다.
 
-> 이 저장소에는 문헌연구의 **방법론과 중간 산출물**이 들어 있다. 본 수집(Tier 1, 5,758건)은 아직 시작하지 않았고, 과학적 결론은 어느 문서에도 없다.
+
 
 ---
 
@@ -10,15 +10,15 @@
 
 | 단계 | 내용 | 상태 |
 |---|---|---|
-| 1–5 | 방법론 확립, seed set 구축·재검토, reducibility 증거 기준, query 설계·시험 | 완료 |
+| 1–5 | 방법론 확립, seed set 구축 및 재검토, query 설계 시험 | 완료 |
 | 6 | Tier 1 코퍼스 수집 및 screening | **다음 단계** |
 
 ## 문서 (읽는 순서)
 
 | 파일 | 내용 |
 |---|---|
-| [`docs/01_methodology.md`](docs/01_methodology.md) | 현행 검색 방법론. 리뷰 유형, source 역할, query 원칙, 중단 기준, screening, LLM 사용 범위와 검증 관문(Gate 1–3) |
-| [`docs/02_evidence_framework.md`](docs/02_evidence_framework.md) | reducibility의 정의, 연구 framework(5축·2분기), Jeong 2020 → Ammendola 2011 인용 검증, 증거 등급 Tier A/B/C |
+| [`docs/01_methodology.md`](docs/01_methodology.md) | 선행 문헌 연구 방법론. 리뷰 유형, source 역할, query 원칙, 중단 기준, screening, LLM 사용 범위와 검증 관문(Gate 1–3) |
+| [`docs/02_evidence_framework.md`](docs/02_evidence_framework.md) | reducibility의 정의, 연구 framework(5축·2분기), 증거 등급 Tier A/B/C |
 | [`docs/03_seed_set.md`](docs/03_seed_set.md) | seed set v2 (KEEP 18 / OPTIONAL 9 / REMOVE 6)와 선정 근거 |
 | [`docs/04_query.md`](docs/04_query.md) | 검색식 전문, 변이별 recall 측정, 미검출 진단, 2-tier 설계, Scopus/WoS 변환형 |
 
@@ -28,23 +28,31 @@
 |---|---|---|
 | `data/methodology_references.csv` | 71 | 방법론 근거 문헌 (Crossref 70 + arXiv 1 검증). 본문 인용 키 `[Key]`와 대응 |
 | `data/reducibility_references.csv` | 18 | reducibility 개념 문헌. `content_read` 열에 초록 열람(9) / 서지만 검증(9) 표시 |
-| `data/reducibility_evidence_criteria.csv` | 12 | Tier A/B/C 기준. 각 기준이 입증하는 것과 **입증하지 못하는 것** |
+| `data/reducibility_evidence_criteria.csv` | 12 | Tier A/B/C 기준. 각 기준이 입증하는 것과 입증하지 못하는 것 |
 | `data/seed_set_v2.csv` | 33 | 현행 seed set |
 | `data/seed_set_v1_final.csv` / `seed_candidates.csv` | 16 / 21 | v1 seed set과 후보 평가 (이력) |
 | `data/known_item_diagnostic.csv` | 27 | seed × query 라운드별 검출 여부, 원인 코드, 조치 |
 
-`process/`에는 각 단계의 실행 계획(JSON)이 과정 기록으로 남아 있다. 그 안의 문서 파일명은 작성 당시의 옛 이름이다.
+`process/`에는 각 단계의 실행 계획(JSON)이 과정 기록으로 남아 있음
 
 ---
 
 ## 핵심 발견 (방법론적)
 
-1. **인용이 주장을 지지하지 않는다.** 연구 동기인 Jeong 2020 SI Fig. 1은 267 °C H₂-TPR(TCD) 피크를 "표면 Al 환원"으로 해석하며 Ammendola 2011을 인용한다. 그러나 원문을 확인해 보니 그 논문은 **CO-TPR** 연구였다. 신호는 594–602 °C에 있었고, 저자 귀속은 **표면 OH의 water-gas shift**였다. 이 발견으로 인용 지지 검증(Gate 3)을 신설했다. → [02 §4](docs/02_evidence_framework.md#4-사례-인용이-주장을-지지하지-않는다)
-2. **가설 사슬은 Al(V) → oxygen vacancy에서 끊어진다.** 이 연결은 어느 방향으로도 측정된 적이 없다. Al(V)는 양이온의 배위 상태이고, oxygen vacancy는 산소 결손이다. → [02 §6](docs/02_evidence_framework.md#6-사슬-고리별-증거-감사)
-3. **Al³⁺에는 결정적 환원 신호가 원리적으로 없다.** Ce³⁺나 Ti³⁺ 같은 낮은 산화수가 없어서, 입증 부담이 결함상태 분광으로 넘어간다. 현재 γ-Al₂O₃의 Tier A 증거는 0건이다.
-4. **OpenAlex의 Elsevier 초록 보유율은 2.6%다.** 그래서 이 분야의 초록 검색은 대부분 제목 검색이 된다. WoS·Scopus 보강을 필수로 격상했다. → [04 §0](docs/04_query.md#0-설계-전제를-뒤집은-관측--openalex-초록-보유율)
-5. **단일 query로는 precision과 recall을 함께 얻을 수 없다.** core seed 6/21은 5,758건, 21/21은 93,857건이다. 그래서 2-tier로 설계하고 citation chasing을 recall의 주 담당으로 둔다.
-6. **산소 거동의 직접 증거는 촉매 문헌 밖에 있다.** 핵재료·광학(F-center), 금속공학(탄소열 환원), 고온산화(¹⁸O/SIMS) 커뮤니티에 있다. 단, 모두 α상 또는 피막이다.
+1. **인용이 주장을 지지하지 않는다.** Jeong 2020은 267°C의 H₂-TPR peak를 보고 “Al₂O₃ 표면의 Al이 환원된 것”이라고 해석하면서 Ammendola 2011을 인용했다. 그런데 Ammendola 원문은 H₂가 아니라 CO를 사용한 실험이었고, 594–602°C의 신호를 Al 환원이 아니라 surface OH와 CO의 반응으로 물이 생성된 것이라고 설명한다.
+→ 즉, 논문에 citation이 있다고 해서 그 citation이 실제로 그 주장을 뒷받침하는 것은 아니다. 그래서 앞으로는 인용된 원문까지 확인하는 Gate 3가 필요하다. → [02 §4](docs/02_evidence_framework.md#4-사례-인용이-주장을-지지하지-않는다)
+2. **Al(V)가 많으면 oxygen vacancy가 잘 생긴다”는 핵심 연결고리가 아직 없다** 처음 생각한 가설은 대략
+**Al(V) 증가 → oxygen vacancy 형성 용이 → reducible γ-Al₂O₃** 이었으나, 문헌을 찾아보니 Al(V)와 oxygen vacancy를 직접 연결해서 측정한 연구를 찾지 못했다.
+→ 따라서 현재로서는 이 연결을 알려진 사실로 전제하면 안 되고, 오히려 연구에서 검증해야 할 hypothesis로 봐야 한다.
+→ [02 §6](docs/02_evidence_framework.md#6-사슬-고리별-증거-감사)
+4. **Al2O3 환원 증명의 어려움** CeO₂라면 Ce⁴⁺ → Ce³⁺, TiO₂라면 Ti⁴⁺ → Ti³⁺처럼 metal oxidation state 변화를 XPS/EPR 등으로 확인할 수 있다. 하지만 Al₂O₃의 Al은 기본적으로 Al³⁺이고 안정한 Al²⁺ 같은 상태를 이용하기 어렵다.
+→ 따라서 H₂-TPR peak 하나만 보고 “Al₂O₃가 환원됐다”고 하기 어렵고, oxygen vacancy 같은 defect가 실제 생성됐다는 spectroscopic evidence가 필요하다. 현재 조사 범위에서는 γ-Al₂O₃에 대해 그런 강한 직접 증거(Tier A)를 아직 찾지 못하였다.
+5. **OpenAlex만 검색해서는 논문을 충분히 찾기 어렵다** 특히 Elsevier 논문의 경우 OpenAlex에 abstract가 들어 있는 비율이 조사 결과 **2.6%**밖에 되지 않았다. 그러면 abstract keyword search를 한다고 해도 실제로는 대부분 title만 검색하는 것과 비슷해진다.
+→ 그래서 OpenAlex 하나만 쓰지 말고 Web of Science(WoS), Scopus 같은 database를 추가하였다. → [04 §0](docs/04_query.md#0-설계-전제를-뒤집은-관측--openalex-초록-보유율)
+7. **검색어 하나로 모든 관련 논문을 잘 찾는 것은 불가능했다.** 검색식을 좁게 만들면 관련성이 높은 논문만 나오지만 중요한 논문을 놓친다(high precision, low recall). 반대로 관련 논문 21개를 전부 잡도록 검색식을 넓히면 93,857건이나 나와 screening이 불가능해진다(high recall, low precision).
+→ 그래서 2단계 검색을 사용하여, 먼저 비교적 정확한 query로 핵심 논문을 찾고, 그 논문들의 references와 citing papers를 따라가는 citation chasing으로 놓친 논문을 확보한다.
+8. **oxygen vacancy를 직접 측정한 좋은 방법론은 Al₂O₃ catalyst 문헌보다 다른 분야에 많았다.** γ-Al₂O₃ catalyst 논문만 보면 직접적인 oxygen 이동·제거 증거가 부족하다. 반면 nuclear materials, optical materials, metallurgy, high-temperature oxidation 분야에서는 F-center spectroscopy, ¹⁸O isotope labeling + SIMS 같은 방법으로 oxygen defect나 oxygen transport를 더 직접적으로 연구한다.
+→ 이 분야들의 측정 방법을 γ-Al₂O₃ 연구에 가져올 수 있는지 살펴볼 가치가 있으나, 다만 기존 연구 대상은 주로 α-Al₂O₃나 oxide film이므로 γ-Al₂O₃에 그대로 적용된다고 가정하면 안된다.
 
 ## 다음 단계
 
@@ -63,7 +71,7 @@
 | **[측정]** | 논문이 실제로 측정·계산한 값 |
 | **[저자해석]** | 저자가 측정에서 끌어낸 해석 |
 | **[문헌정의]** | 문헌이 명시적으로 내린 정의 |
-| **[판단]** | 이 프로젝트(분석 보조 AI 포함)의 판단 — 논문의 주장이 아님 |
+| **[판단]** | 이 사람의 판단 — 논문의 주장이 아님 |
 | ①확립 / ②수정 / ③신규 | 방법론 결정의 출처. 기존 문헌에서 확립됨 / 확립된 것을 이 분야에 맞게 수정함 / 이 프로젝트의 신규 제안(직접 근거 없음) |
 | † | 서지만 검증한 문헌. 내용 주장 없이 표준 참조로만 인용 |
 
@@ -75,9 +83,8 @@
 | recall / precision | 관련 문헌 중 검색에 걸린 비율 / 검색 결과 중 관련 문헌 비율 |
 | citation chasing (BWC / FWC) | 참고문헌을 거슬러 가기(backward) / 인용한 문헌을 따라가기(forward) |
 | Al(V) | 5배위 알루미늄. 표면에만 있는 저배위 Al site |
-| oxygen vacancy | 격자에서 O²⁻가 빠진 자리. cation vacancy(Al 자리의 빈자리, γ-Al₂O₃에 원래 존재)와 다르다 |
+| oxygen vacancy | 격자에서 O²⁻가 빠진 자리. cation vacancy(Al 자리의 빈자리, γ-Al₂O₃에 원래 존재)와 다름 |
 | E_Ovac | 산소공공 하나를 만드는 데 드는 에너지. reducibility의 대표 척도 |
-| TCD | 열전도도 검출기. 어떤 기체가 변했는지 구별하지 못한다 |
 | Tier A/B/C | reducibility 증거로 인정 / 보조 / 불인정 |
 
 ---
@@ -86,7 +93,7 @@
 
 - 문헌 탐색과 인용 네트워크에는 OpenAlex API를 썼다.
 - 서지 검증에는 Crossref API(preprint는 arXiv API)를 썼다.
-- 이 저장소의 모든 DOI는 위 API가 반환한 값이다. 기억이나 추론으로 입력한 것은 없다.
+- 이 저장소의 모든 DOI는 위 API가 반환한 값이다. 
 - 출판사 PDF 원문은 저작권 때문에 포함하지 않았다.
 - 파이프라인 스크립트는 포함하지 않았다. 질의 문자열은 `docs/04`에 그대로 있어 재현할 수 있다.
 
